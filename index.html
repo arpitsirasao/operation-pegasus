@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1120">
+<title></title>
+<style>
+:root{--bg:#0b1120;--card:#141c2f;--card2:#1d2740;--line:#2a3654;--txt:#e8edf7;--mut:#94a3b8;--lime:#a3e635;--amber:#fbbf24;--rose:#fb7185;--sky:#7dd3fc}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:18px 16px 60px}
+header{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+.kicker{font-size:11px;letter-spacing:.28em;color:var(--lime);font-weight:800}
+h1{font-size:34px;line-height:1.05;margin:6px 0 2px;font-weight:900;letter-spacing:-.02em}h1 span{color:var(--lime)}
+h2{font-size:24px;margin:4px 0 10px;font-weight:900}h3{font-size:15px;margin:0 0 8px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.sub{color:var(--mut);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+.inner{background:var(--card2);border-radius:14px;padding:14px;margin:10px 0}
+.ev{border-left:3px solid var(--sky);padding:10px 12px;background:#0f172a;border-radius:0 12px 12px 0;margin:10px 0;font-size:15px}
+.ev b{color:var(--sky)}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--mut);font-weight:600}
+input,select{width:100%;background:#0f172a;color:var(--txt);border:1px solid var(--line);border-radius:12px;padding:13px;font-size:17px;outline:none}
+input:focus,select:focus{border-color:var(--lime)}
+button{font:inherit;border:0;border-radius:14px;padding:14px 16px;font-weight:800;cursor:pointer;width:100%}
+.btn{background:var(--lime);color:#0b1120}.btn2{background:var(--card2);color:var(--txt);border:1px solid var(--line)}.btn3{background:transparent;color:var(--mut);font-weight:600;padding:8px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px}.row>*{flex:1}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pick{background:var(--card2);border:2px solid var(--line);border-radius:16px;padding:14px;text-align:left;color:var(--txt)}
+.pick.on{border-color:var(--lime);background:#1a2a16}
+.pick small{display:block;color:var(--mut);font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}.stat{background:var(--card);border-radius:14px;padding:8px;text-align:center}.stat div:first-child{font-size:11px;color:var(--mut);letter-spacing:.1em}.stat div:last-child{font-weight:800;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{display:flex;gap:5px;margin-bottom:14px}.prog i{flex:1;height:7px;border-radius:9px;background:var(--line)}.prog i.done{background:var(--lime)}.prog i.cur{background:#fff}
+.tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--lime)}
+.err{color:var(--rose);margin:8px 0 0}.ok{color:var(--lime)}.hint{color:var(--amber);margin:8px 0 0;font-size:15px}
+.big{font-size:40px;font-weight:900;color:var(--lime);letter-spacing:.08em;text-align:center;margin:8px 0}
+.photo{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}.photo:last-child{border:0}.photo code{background:#0f172a;color:var(--lime);padding:2px 7px;border-radius:7px;font-weight:800;white-space:nowrap}
+.note{font-size:13px;color:var(--mut)}
+.center{text-align:center}
+.flash{animation:fl .6s}@keyframes fl{0%{transform:scale(.97);opacity:.5}100%{transform:none;opacity:1}}
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:_CopySource msdt:dt="string">https://adidasgroup-my.sharepoint.com/personal/adriane_maia_adidas_com/Documents/Documents/Copilot/Created/Operation_Pegasus_Game_v2.html</mso:_CopySource>
+<mso:Order msdt:dt="string">41998200.0000000</mso:Order>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+"use strict";
+/* ============================================================
+   OPERATION PEGASUS 2.0 · The Campus Escape Hunt
+   Answers are stored only as one-way hashes, so viewing the
+   source does not reveal them. Progress is saved on the device.
+   ============================================================ */
+var HASH = {"marker":{"arena":["2fh60a105q4","1l81rr50aba"],"halftime":["vdbpiar0of"],"laces":["22y9mx1xd5m"],"podium":["1h0ek1vxki4","1r9nnglq7s9"],"stripes":["2flddoxd8xk"]},"ans":{"arena":["4vyk0vfvw6"],"halftime":["1s9puptehqq"],"podium":["27wpi3glov3"],"stripes":["hkcw9hsq2d"],"laces":["876r5b0sgk"]},"acc":{"who":"1rom1a1ptwr","doc":"k0wn7rp74h","where":"kvusxdi8td"},"env":{"samba":"qwsumtsnhw","stansmith":"70vyxvj4c","ultraboost":"7m68glvt73"}};
+
+function cyrb(str,seed){seed=seed||7;var h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(var i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(36);}
+function norm(s){return String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');}
+function H(s,salt){return cyrb(salt+'|'+norm(s));}
+/* Case-file code India needs: derived from the station marker hash, never stored in clear */
+function indiaCode(id){return String(parseInt(cyrb(HASH.marker[id][0]+'|india'),36)%9000+1000);}
+
+/* All teams start at ARENA and finish back at ARENA */
+var TEAMS=[
+ {id:'samba',name:'Samba',route:['halftime','laces','podium','stripes','arena']},
+ {id:'stansmith',name:'Stan Smith',route:['laces','podium','stripes','halftime','arena']},
+ {id:'ultraboost',name:'Ultraboost',route:['podium','stripes','laces','halftime','arena']}
+];
+
+var M={
+arena:{n:1,place:'ARENA',title:'The Locked Case File',
+ clue:'“Before you ever set foot inside, a foot was already there waiting.”<br>Find the very first one that greets you on the way into ARENA. Its owner made a career out of stepping <i>backwards</i> and still scoring.<br><br>Enter his full name.',
+ clueHint:'He is better known for his beard than his shave. Houston, number 13.',
+ intro:'Security has sealed the case file on PEGASUS. Open it to learn what happened at the vault.',
+ de:'<div class="ev"><b>Security file cover</b><br>“Four buildings guard the code.”<table><tr><th>Building</th><th>Opened</th></tr><tr><td>LACES</td><td>2011</td></tr><tr><td>SPIKES</td><td>1999</td></tr><tr><td>ARENA</td><td>2019</td></tr><tr><td>PODIUM</td><td>2005</td></tr></table></div>',
+ in:'<div class="ev"><b>Security protocol 7.2</b><br>The case file code has one digit per building: the last digit of its opening year. Read the buildings from the oldest to the newest.</div>',
+ q:'Enter the 4-digit case file code.',
+ hints:['Germany has the years. India has the rule. You need both.','Put the years in order first: which building opened earliest?'],
+ reveal:'Case file opened. The LACES vault was opened at 14:12. An EU 44 shoe print was found next to it. All three suspects wear EU 44, so the print alone proves nothing.',
+ photos:[['1.1','Germany','Something on campus that represents adidas history'],['1.2','India','Something in your office that represents adidas history'],['1.3','Joint','Both sides pose as detectives at a crime scene']]},
+halftime:{n:2,place:'HALFTIME',title:'The Badge Log',
+ clue:'“Built for a game played over a net, where the ball must never kiss the floor. It promised a new level of speed and agility.”<br>Somewhere in HALFTIME it rests. Its name, in two words: a journey through the air that has completely lost its mind.<br><br>Enter the shoe’s name.',
+ clueHint:'Think volleyball. A word for “mad” + a word for a trip on a plane.',
+ intro:'Security pulled the badge-reader data for the minutes around the theft. Time to test the alibis against the clock.',
+ de:'<div class="ev"><b>Campus walking-time board</b><br>Minimum walking time to the LACES vault:<table><tr><td>From SPIKES</td><td>8 min</td></tr><tr><td>From ARENA</td><td>6 min</td></tr><tr><td>From THE LAKE</td><td>7 min</td></tr><tr><td>From STRIPES</td><td>4 min</td></tr></table></div>',
+ in:'<div class="ev"><b>Badge-reader export (system record)</b><table><tr><th>Time</th><th>Event</th></tr><tr><td>14:02</td><td>Drew: no badge events (outdoor duty)</td></tr><tr><td>14:10</td><td>Alex: SPIKES main entrance, IN</td></tr><tr><td>14:12</td><td>LACES vault: OPENED by code</td></tr><tr><td>14:26</td><td>Alex: SPIKES main entrance, OUT</td></tr><tr><td>—</td><td>Eli: no badge events 13:50–14:30</td></tr></table></div>',
+ q:'Which suspect could NOT have opened the vault at 14:12?',
+ hints:['Systems never lie. Who has a system record close to 14:12?','Check whether that person had enough time to walk to LACES.'],
+ reveal:'Alex badged into SPIKES at 14:10 and needs at least 8 minutes to reach LACES. Alex could not have opened the vault at 14:12.',
+ photos:[['2.1','Germany','The most uncomfortable-looking place to have a meeting'],['2.2','India','The most uncomfortable meeting spot in your office'],['2.3','Joint','Both sides recreate the same ridiculous meeting pose']]},
+podium:{n:3,place:'PODIUM',title:'The Maintenance Tag',
+ clue:'“The year the Beatles broke up, a whole nation was ordered off the sofa.”<br>Somewhere in PODIUM that year is written down. Beside it stand two words: a command, and the second word points straight at <i>you</i>.<br><br>Enter the two words.',
+ clueHint:'Look for 1970. A German fitness slogan telling you to get yourself trim.',
+ intro:'A coded maintenance tag from the lake pump was handed in at PODIUM. Facility staff use a simple code. Can you read it?',
+ de:'<div class="ev"><b>Maintenance tag (from the lake pump)</b><br><span class="mono">16-21-13-16 · 18-5-19-5-20 · 2-25 · 4-18-5-23</span><br><br>Scribbled underneath: <span class="mono">14:11</span></div>',
+ in:'<div class="ev"><b>Facility code sheet</b><br>Tags are written in the alphabet code: <span class="mono">A=1 · B=2 · C=3 … Z=26</span></div><div class="ev"><b>Building-management log (system record)</b><table><tr><td>14:11:32</td><td>Lake pump P-2: manual reset at the pump</td></tr><tr><td>14:14–14:22</td><td>CCTV LAKE-02: one person working at pump P-2</td></tr></table><br>Minimum walk from THE LAKE to LACES: 7 min</div>',
+ q:'Whose alibi is confirmed by the system records?',
+ hints:['India holds the key to Germany’s numbers.','Decode the last group of numbers on the tag. Then check the timing.'],
+ reveal:'The tag reads PUMP RESET BY DREW. The pump was reset by hand at 14:11 and CCTV shows someone at it from 14:14. Drew could not have been at the vault at 14:12.',
+ photos:[['3.1','Germany','Something that could help you survive a zombie apocalypse'],['3.2','India','The most useful office object for a zombie apocalypse'],['3.3','Joint','Explain how you would combine both objects to survive']]},
+stripes:{n:4,place:'STRIPES',title:'The Lunch Receipt',
+ clue:'“Every meal in STRIPES ends in the same place: where everything you emptied goes to say goodbye.”<br>Someone there is politely asking you for a favour.<br><br>Repeat their two words exactly.',
+ clueHint:'Follow your empty tray after lunch. Read what is written where it goes.',
+ intro:'Security collected each suspect’s paper alibi. Paper can lie. Check it against reality and the till system.',
+ de:'<div class="ev"><b>Paper alibis held by security</b><table><tr><td>Alex</td><td>Timesheet: SPIKES, 13:30–15:00</td></tr><tr><td>Drew</td><td>Work order: lake pump P-2, 14:00–14:30</td></tr><tr><td>Eli</td><td>Receipt no. 0412: STRIPES, <b>Counter 7</b>, 14:12, 1× Pasta, cash</td></tr></table></div><div class="inner"><b>On-site task:</b> count the food counters at STRIPES. Tell India what you find.</div>',
+ in:'<div class="ev"><b>STRIPES till export (system record)</b><br>Registered tills: one per counter.<table><tr><th>Receipt</th><th>Time</th><th>Counter</th><th>Payment</th></tr><tr><td>0409</td><td>11:52</td><td>3</td><td>Card</td></tr><tr><td>0410</td><td>12:05</td><td>1</td><td>Card</td></tr><tr><td>0411</td><td>12:31</td><td>5</td><td>Cash</td></tr><tr><td>0412</td><td>12:47</td><td>2</td><td>Card, 2× Pasta</td></tr><tr><td>0413</td><td>14:16</td><td>6</td><td>Card</td></tr></table></div>',
+ q:'Whose paper alibi is forged?',
+ hints:['Does the counter on the receipt actually exist?','Compare receipt 0412 on paper with receipt 0412 in the till export.'],
+ reveal:'STRIPES has no Counter 7, and the real receipt 0412 was 2× Pasta paid by card at 12:47. Eli’s receipt is forged.',
+ photos:[['4.1','Germany','Something that looks like it was designed by AI'],['4.2','India','The most futuristic-looking object in your office'],['4.3','Joint','One side plays the chef, the other the food critic']]},
+laces:{n:5,place:'LACES',title:'Back to the Scene',
+ clue:'“Somewhere in LACES is a workshop whose name tells you exactly what its people do. Its walls speak to you in single words.”<br>Read them in order. The word that would win <i>bronze</i> is your code.',
+ clueHint:'Find the MakerLab. Count the motivational words: 1st, 2nd, 3rd.',
+ intro:'Back at the crime scene, a folded note is tucked under one of the floating bridges. Security also found something in the turnstile data.',
+ de:'<div class="ev"><b>Note under the floating bridge</b><br>“It is not at the finish line. Look where innovation meets speed.”</div>',
+ in:'<div class="ev"><b>Turnstile export (system record)</b><table><tr><td>14:19</td><td>Side entrance: card -05, IN</td></tr><tr><td>14:27</td><td>Side entrance: card -05, OUT</td></tr></table><br>The export’s building name is damaged. Only a second note survived:<br>“Where every great performance begins with a shoe.”</div>',
+ q:'Which building is PEGASUS hidden in?',
+ hints:['Put both notes together: speed, innovation, a shoe.','Think of a campus building that is named after a running shoe.'],
+ reveal:'Both notes point to the same building. You know where PEGASUS is, but don’t go yet: you need all the evidence first.',
+ photos:[['5.1','Germany','Recreate a famous sports victory celebration'],['5.2','India','Recreate the same celebration in your office'],['5.3','Joint','One combined victory photo with both locations']]}
+};
+var PLACES=['ARENA','HALFTIME','LACES','PODIUM','SPIKES','STRIPES','THE LAKE'];
+var PTS={puzzle:100,hint:20,wrong:10,acc:200,accPartial:100,treasure:100};
+
+/* ---------- state ---------- */
+var KEY='pegasus3';var S=load();
+function blank(){return {team:null,loc:null,started:null,ended:null,round:0,arrived:{},solved:{},hints:{},mhints:{},wrong:0,acc:null,accPts:0,treasure:false,inOpen:{},inCur:null,msg:''};}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||blank();}catch(e){return blank();}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function team(){return TEAMS.filter(function(t){return t.id===S.team;})[0];}
+function cur(){return team().route[S.round];}
+function hintCount(){var c=0;for(var k in S.hints)c+=S.hints[k];for(var j in S.mhints)c+=S.mhints[j];return c;}
+function score(){return Object.keys(S.solved).length*PTS.puzzle-hintCount()*PTS.hint-S.wrong*PTS.wrong+S.accPts+(S.treasure?PTS.treasure:0);}
+function clock(){if(!S.started)return '00:00';var t=Math.floor(((S.ended||Date.now())-S.started)/1000);return pad(Math.floor(t/60))+':'+pad(t%60);}
+function pad(n){return (n<10?'0':'')+n;}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function $(id){return document.getElementById(id);}
+var app=$('app');
+
+function head(){return '<header><div class="kicker">WORLD OF SPORTS × INDIA · TEAM QUEST</div><h1>OPERATION <span>PEGASUS</span> 2.0</h1><p class="sub">The Campus Escape Hunt</p></header>';}
+function stats(){return '<div class="stats"><div class="stat"><div>TEAM</div><div>'+esc(team().name)+'</div></div><div class="stat"><div>SCORE</div><div id="sc">'+score()+'</div></div><div class="stat"><div>TIME</div><div id="clk">'+clock()+'</div></div></div>';}
+function prog(){var r=team().route,h='<div class="prog">';for(var i=0;i<5;i++){h+='<i class="'+(S.solved[r[i]]?'done':(i===S.round?'cur':''))+'"></i>';}return h+'</div>';}
+function photos(m,only){var h='<div class="card"><h3>📸 Photo missions</h3>';m.photos.forEach(function(p){if(only&&p[1]!==only&&p[1]!=='Joint')return;h+='<div class="photo"><code>'+p[0]+'</code><div><b>'+p[1]+':</b> '+p[2]+'</div></div>';});
+ return h+'<p class="note">Post in the Photo Challenges channel as <b>Team '+esc(team().name)+' | '+m.photos[0][0].charAt(0)+'.x | caption</b>. Organizers award the photo points.</p></div>';}
+
+/* ---------- screens ---------- */
+function render(){
+ if(!S.team||!S.loc)return renderSetup();
+ if(S.loc==='de')return renderDE();
+ return renderIN();
+}
+
+function renderSetup(){
+ var h=head()+'<div class="card"><h2>A prototype has disappeared.</h2><p class="sub">PEGASUS, a secret adidas running prototype, is missing from the Innovation Lab vault. Three suspects. One fake alibi. Germany and India each hold half of the evidence.</p></div>';
+ h+='<div class="card"><h3>1 · Your team</h3><div class="grid2">';
+ TEAMS.forEach(function(t){h+='<button class="pick'+(S._t===t.id?' on':'')+'" data-t="'+t.id+'">'+t.name+'</button>';});
+ h+='</div><h3 style="margin-top:16px">2 · Your location</h3><div class="grid2"><button class="pick'+(S._l==='de'?' on':'')+'" data-l="de">🇩🇪 Germany<small>Campus investigators</small></button><button class="pick'+(S._l==='in'?' on':'')+'" data-l="in">🇮🇳 India<small>Digital investigators</small></button></div>';
+ h+='<p class="note" style="margin-top:12px">Use one phone per location. Keep your team’s Teams chat open the whole time.</p><button class="btn" id="go" '+(S._t&&S._l?'':'disabled')+'>START INVESTIGATION →</button></div>';
+ app.innerHTML=h;
+ app.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){S._t=b.dataset.t;renderSetup();};});
+ app.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){S._l=b.dataset.l;renderSetup();};});
+ $('go').onclick=function(){S.team=S._t;S.loc=S._l;delete S._t;delete S._l;if(S.loc==='de')S.started=Date.now();save();render();};
+}
+
+/* ----- Germany (official scoring device) ----- */
+function renderDE(){
+ if(S.treasure)return renderEnd();
+ if(S.round>=5)return S.acc?renderFinalHunt():renderAccuse();
+ var id=cur(),m=M[id],h=head()+stats()+prog();
+ if(!S.arrived[id]){
+  var mh=S.mhints[id]||0;
+  h+='<div class="card flash"><span class="tag">ROUND '+(S.round+1)+' OF 5 · NEXT STOP</span><h2>📍 Go to '+m.place+'</h2><p class="sub">Crack the clue on site at '+m.place+' and enter the answer to unlock the station.</p><div class="ev"><b>🔎 Clue</b><br>'+m.clue+'</div>'+(mh?'<p class="hint">Hint: '+m.clueHint+'</p>':'')+'<div class="inner"><input id="mk" placeholder="Your answer" autocomplete="off" autocapitalize="characters"><div style="height:10px"></div><div class="row"><button class="btn" id="mkb">UNLOCK STATION</button><button class="btn2" id="mhb" style="flex:0 0 120px" '+(mh?'disabled':'')+'>💡 Hint −20</button></div><p class="err" id="e"></p></div></div>'+footer();
+  app.innerHTML=h;
+  var f=function(){if(HASH.marker[id].indexOf(H($('mk').value,'marker'))>-1){S.arrived[id]=true;save();render();}else{$('e').textContent='That’s not it. Look around '+m.place+' again.';}};
+  $('mkb').onclick=f;$('mk').onkeydown=function(e){if(e.key==='Enter')f();};
+  $('mhb').onclick=function(){if(!$('mhb').dataset.arm){$('mhb').dataset.arm='1';$('mhb').textContent='Tap again (−20)';return;}S.mhints[id]=1;save();render();};
+  bindFooter();
+  return;
+ }
+ var solved=!!S.solved[id],nh=S.hints[id]||0;
+ h+='<div class="card flash"><span class="tag">STATION '+(S.round+1)+' OF 5 · '+m.place+'</span><h2>'+m.title+'</h2><p class="sub">'+m.intro+'</p>';
+ h+='<div class="inner center"><div class="note">Tell India this case-file code so they can open their evidence:</div><div class="big">'+indiaCode(id)+'</div></div>';
+ h+='<h3 style="margin-top:14px">Germany’s evidence</h3>'+m.de;
+ h+='<div class="inner"><b>🔒 '+m.q+'</b><p class="note">India has evidence you don’t. Talk before you answer.</p>';
+ if(!solved){
+  h+='<input id="ans" placeholder="Your answer" autocomplete="off"><div style="height:10px"></div><div class="row"><button class="btn" id="chk">CHECK ANSWER</button><button class="btn2" id="hb" style="flex:0 0 120px" '+(nh>=2?'disabled':'')+'>💡 Hint −20</button></div>';
+  for(var i=0;i<nh;i++)h+='<p class="hint">Hint '+(i+1)+': '+m.hints[i]+'</p>';
+  h+='<p class="err" id="e">'+(S.msg||'')+'</p>';
+ }else{h+='<p class="ok">✅ '+m.reveal+'</p>';}
+ h+='</div>';
+ if(solved)h+='<button class="btn" id="nx">'+(S.round===4?'OPEN THE FINAL ACCUSATION →':'NEXT STATION →')+'</button>';
+ h+='</div>'+photos(m);
+ h+=footer();
+ app.innerHTML=h;S.msg='';
+ if(!solved){
+  var c=function(){var v=$('ans').value;if(!norm(v))return;if(HASH.ans[id].indexOf(H(v,'ans:'+id))>-1){S.solved[id]=true;save();render();}else{S.wrong++;S.msg='Not quite. Check the evidence again. (−10)';save();render();}};
+  $('chk').onclick=c;$('ans').onkeydown=function(e){if(e.key==='Enter')c();};
+  $('hb').onclick=function(){if(!$('hb').dataset.arm){$('hb').dataset.arm='1';$('hb').textContent='Tap again (−20)';return;}S.hints[id]=(S.hints[id]||0)+1;save();render();};
+ }else{$('nx').onclick=function(){S.round++;save();render();window.scrollTo(0,0);};}
+ bindFooter();
+}
+
+function renderAccuse(){
+ var h=head()+stats()+prog();
+ h+='<div class="card flash"><span class="tag">ALL EVIDENCE COLLECTED</span><h2>⚖️ Final accusation</h2><p class="sub">Discuss it with India first. You get <b>one attempt</b>. All three right: 200 points. Two right: 100.</p>';
+ h+='<div class="inner"><b>Who stole PEGASUS?</b><select id="a1"><option value="">Choose…</option><option>ALEX</option><option>DREW</option><option>ELI</option></select></div>';
+ h+='<div class="inner"><b>Which paper alibi was forged?</b><select id="a2"><option value="">Choose…</option><option value="TIMESHEET">Alex’s timesheet</option><option value="WORKORDER">Drew’s work order</option><option value="RECEIPT">Eli’s STRIPES receipt</option></select></div>';
+ h+='<div class="inner"><b>Where is PEGASUS hidden?</b><select id="a3"><option value="">Choose…</option>'+PLACES.map(function(p){return '<option>'+p+'</option>';}).join('')+'</select></div>';
+ h+='<button class="btn" id="sub">SUBMIT ACCUSATION</button><p class="err" id="e"></p></div>'+footer();
+ app.innerHTML=h;
+ $('sub').onclick=function(){var a=[$('a1').value,$('a2').value,$('a3').value];if(a.indexOf('')>-1){$('e').textContent='Answer all three questions.';return;}
+  if(!$('sub').dataset.arm){$('sub').dataset.arm='1';$('sub').textContent='TAP AGAIN TO CONFIRM · NO SECOND ATTEMPT';return;}
+  var k=['who','doc','where'],right=0;for(var i=0;i<3;i++)if(H(a[i],'acc:'+k[i])===HASH.acc[k[i]])right++;
+  S.acc={right:right};S.accPts=right===3?PTS.acc:(right===2?PTS.accPartial:0);save();render();window.scrollTo(0,0);};
+ bindFooter();
+}
+
+function renderFinalHunt(){
+ var r=S.acc.right,h=head()+stats()+prog();
+ h+='<div class="card flash"><span class="tag">ACCUSATION SUBMITTED</span><h2>'+(r===3?'🎯 Case solved!':'📁 Accusation recorded')+'</h2><p class="sub">'+(r===3?'All three answers are correct. +200 points.':(r===2?'Two of three answers are correct. +100 points.':'Not enough correct answers for points, but PEGASUS still needs to be recovered.'))+'</p>';
+ h+='<div class="inner"><b>🏁 Final mission: recover PEGASUS</b><p>Security traced PEGASUS to <b>SPIKES</b> and has brought it back to <b>ARENA</b> for safekeeping. Return to ARENA, find the envelope marked <b>Team '+esc(team().name)+'</b>, open only your own, and enter the code inside. Then send the code to India.</p><input id="tc" inputmode="numeric" placeholder="Envelope code" autocomplete="off"><div style="height:10px"></div><button class="btn" id="tb">STOP THE CLOCK</button><p class="err" id="e"></p></div></div>'+footer();
+ app.innerHTML=h;
+ var f=function(){if(H($('tc').value,'env:'+S.team)===HASH.env[S.team]){S.treasure=true;S.ended=Date.now();save();render();window.scrollTo(0,0);}else{$('e').textContent='That’s not your team’s code. Check the envelope name.';}};
+ $('tb').onclick=f;$('tc').onkeydown=function(e){if(e.key==='Enter')f();};
+ bindFooter();
+}
+
+function renderEnd(){
+ var hc=hintCount(),pz=Object.keys(S.solved).length;
+ var proof=cyrb(S.team+'|'+score()+'|'+clock()+'|pegasus').slice(0,6).toUpperCase();
+ var h=head()+'<div class="card center flash"><div style="font-size:56px">🏆</div><h2>CASE CLOSED!</h2><p>Team <b>'+esc(team().name)+'</b> recovered PEGASUS in <b>'+clock()+'</b>.</p><div class="big">'+score()+' PTS</div><p class="note">Photo points are added by the organizers.</p></div>';
+ h+='<div class="card"><h3>Score breakdown</h3><table><tr><td>Puzzles solved ('+pz+'×100)</td><td>'+pz*100+'</td></tr><tr><td>Hints ('+hc+'×−20)</td><td>'+(-hc*20)+'</td></tr><tr><td>Wrong answers ('+S.wrong+'×−10)</td><td>'+(-S.wrong*10)+'</td></tr><tr><td>Final accusation ('+S.acc.right+'/3)</td><td>'+S.accPts+'</td></tr><tr><td>PEGASUS recovered</td><td>100</td></tr><tr><th>Total</th><th>'+score()+'</th></tr></table>';
+ h+='<div class="inner mono" id="post">Team '+esc(team().name)+' | FINAL | '+score()+' pts | '+clock()+' | check '+proof+'</div><button class="btn" id="cp">COPY RESULT FOR TEAMS</button><p class="note">Post this line in the Leaderboard channel. Organizers use the check code to verify it.</p></div>'+footer();
+ app.innerHTML=h;
+ $('cp').onclick=function(){var t=$('post').textContent;var done=function(){$('cp').textContent='COPIED ✓';};try{navigator.clipboard.writeText(t).then(done,sel);}catch(e){sel();}function sel(){var r=document.createRange();r.selectNodeContents($('post'));var w=getSelection();w.removeAllRanges();w.addRange(r);try{document.execCommand('copy');done();}catch(e){$('cp').textContent='Long-press the line to copy';}}};
+ bindFooter();
+}
+
+/* ----- India (evidence device) ----- */
+function renderIN(){
+ var t=team(),h=head();
+ h+='<div class="card"><span class="tag">TEAM '+esc(t.name.toUpperCase())+' · 🇮🇳 DIGITAL INVESTIGATORS</span><h2>Open the next case file</h2><p class="sub">When Germany reaches a station, their screen shows a 4-digit case-file code. Enter it here to open India’s evidence for that station.</p><div class="inner"><input id="ic" inputmode="numeric" placeholder="Case-file code from Germany" autocomplete="off"><div style="height:10px"></div><button class="btn" id="ib">OPEN CASE FILE</button><p class="err" id="e"></p></div>';
+ var opened=t.route.filter(function(r){return S.inOpen[r];});
+ if(opened.length){h+='<h3 style="margin-top:6px">Opened files</h3><div class="grid2">';opened.forEach(function(r){h+='<button class="pick'+(S.inCur===r?' on':'')+'" data-f="'+r+'">'+M[r].n+' · '+M[r].place+'</button>';});h+='</div>';}
+ h+='</div>';
+ if(S.inCur){var m=M[S.inCur];
+  h+='<div class="card flash"><span class="tag">CASE FILE · '+m.place+'</span><h2>'+m.title+'</h2><p class="sub">'+m.intro+'</p><h3 style="margin-top:14px">India’s evidence</h3>'+m.in+'<div class="inner"><b>🔒 The question:</b> '+m.q+'<p class="note">Share your evidence with Germany. Germany enters the team’s answer.</p></div></div>'+photos(m,'India');
+ }
+ h+='<div class="card"><h3>🏁 Final mission</h3><p class="sub">At the end, Germany finds your team’s envelope and sends you the code. Enter it here to close the case on your side.</p><input id="fc" inputmode="numeric" placeholder="Envelope code" autocomplete="off"><div style="height:10px"></div><button class="btn2" id="fb">CLOSE THE CASE</button><p class="err" id="e2"></p>'+(S.treasure?'<p class="ok">🏆 Case closed! Celebrate with Germany.</p>':'')+'</div>'+footer();
+ app.innerHTML=h;
+ var open=function(){var v=norm($('ic').value),hit=null;t.route.forEach(function(r){if(indiaCode(r)===v)hit=r;});
+  if(hit){S.inOpen[hit]=true;S.inCur=hit;save();render();window.scrollTo(0,document.body.scrollHeight>900?420:0);}else{$('e').textContent='That code doesn’t open a case file for your team.';}};
+ $('ib').onclick=open;$('ic').onkeydown=function(e){if(e.key==='Enter')open();};
+ app.querySelectorAll('[data-f]').forEach(function(b){b.onclick=function(){S.inCur=b.dataset.f;save();render();};});
+ var fin=function(){if(H($('fc').value,'env:'+S.team)===HASH.env[S.team]){S.treasure=true;save();render();}else{$('e2').textContent='That’s not your team’s code.';}};
+ $('fb').onclick=fin;
+ bindFooter();
+}
+
+/* ----- footer / reset ----- */
+function footer(){return '<button class="btn3" id="rs">Reset this device</button>';}
+function bindFooter(){var b=$('rs');if(!b)return;b.onclick=function(){var n=b.dataset.n=(+(b.dataset.n||0))+1;if(n<3){b.textContent='Organizers: tap '+(3-n)+' more time'+(n===2?'':'s')+' to reset';return;}try{localStorage.removeItem(KEY);}catch(e){}S=blank();render();window.scrollTo(0,0);};}
+
+setInterval(function(){var c=$('clk');if(c&&S.started&&!S.ended)c.textContent=clock();},1000);
+render();
+</script>
+</body>
+</html>
